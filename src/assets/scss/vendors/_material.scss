@@ -1,0 +1,62 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$material-palette-camara: (
+    50 : #fbe0e7,
+    100 : #f5b3c2,
+    200 : #ee809a,
+    300 : #e74d71,
+    400 : #e22652,
+    500 : #dd0034,
+    600 : #d9002f,
+    700 : #d40027,
+    800 : #cf0021,
+    900 : #c70015,
+    A100 : #ffeff0,
+    A200 : #ffbcbf,
+    A400 : #ff898f,
+    A700 : #ff6f77,
+    contrast: (50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$default-level: mat.define-typography-level(
+  $font-family: "Raleway",
+  $font-weight: 700,
+  $font-size: 0.9rem,
+  $line-height: 0,
+  $letter-spacing: normal,
+);
+
+$camara-typography: mat.define-typography-config(
+    $font-family: "Raleway",
+    $body-1: $default-level,
+    $button: $default-level,
+);
+
+$material-pallette: mat.define-palette($material-palette-camara);
+
+$camera-theme: mat.define-light-theme((
+    color: (
+        primary: $material-pallette,
+        accent: $material-pallette,
+        warn: $material-pallette,
+    ),
+    density: 0,
+    typography: $camara-typography,
+));
+
+@include mat.all-component-themes($camera-theme);

@@ -4,6 +4,7 @@ import { QuestionListComponent } from './question-list/question-list.component';
 import { QuestionsRoutingModule } from './questions-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -13,10 +14,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [QuestionListComponent, DeleteConfirmDialogComponent, QuestionFormComponent],
+  declarations: [
+    QuestionListComponent,
+    DeleteConfirmDialogComponent,
+    QuestionFormComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,
+    MatIconModule,
     MatTableModule,
     MatSlideToggleModule,
     MatPaginatorModule,

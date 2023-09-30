@@ -1,4 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+// Vendors
+@import 'assets/scss/vendors/material';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// Utils
+@import 'assets/scss/utils/variables';
+
+// Layout
+@import 'assets/scss/layout/header';
+@import 'assets/scss/layout/grid';
+
+// Components
+@import 'assets/scss/components/buttons';
+@import 'assets/scss/components/table';
+

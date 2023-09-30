@@ -6,19 +6,30 @@
       la hora de desarrollar los formularios.
     </p>
   </div>
-  <button
-    [routerLink]="['/questions/create']"
-    mat-raised-button
-    class="add-button"
-  >
-    Añadir nueva pregunta
-  </button>
-  <div class="table-container">
-    <mat-table [dataSource]="dataSource">
+  <div class="content-action">
+    <button
+      [routerLink]="['/questions/create']"
+      mat-raised-button
+      color="primary"
+      class="mat-elevation-z0 main-button add-button no-shadow"
+    >
+      Añadir nueva pregunta
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="arrow_forward"
+        iconPositionEnd
+      ></mat-icon>
+    </button>
+  </div>
+  <div class="question-list">
+    <mat-table class="question-table" [dataSource]="dataSource">
       <!-- Columna Tipo -->
       <ng-container matColumnDef="type">
         <mat-header-cell *matHeaderCellDef> Tipo </mat-header-cell>
-        <mat-cell *matCellDef="let question"> {{ question.type }} </mat-cell>
+        <mat-cell *matCellDef="let question">
+          {{ questionLabel[question.type] }}
+        </mat-cell>
       </ng-container>
 
       <!-- Columna Pregunta -->
@@ -36,10 +47,20 @@
             color="accent"
             [routerLink]="['/questions/edit', question.id]"
           >
-            Editar
+            Editar 
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Example home icon"
+              fontIcon="edit_document"
+            ></mat-icon>
           </button>
           <button mat-button color="warn" (click)="openDeleteDialog()">
             Eliminar
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Example home icon"
+              fontIcon="delete"
+            ></mat-icon>
           </button>
         </mat-cell>
       </ng-container>

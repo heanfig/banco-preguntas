@@ -1,0 +1,10 @@
+.main-button {
+    font-family: $font-base;
+    padding: 1rem 0;
+    &.no-shadow {
+        box-shadow: none;
+        &:hover, &:focus {
+            box-shadow: none;
+        }
+    }
+}
