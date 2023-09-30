@@ -1,0 +1,33 @@
+body {
+    font-family: 'Roboto', sans-serif; // O cualquier fuente de tu preferencia.
+    background-color: #f5f5f5; // Color de fondo general
+}
+
+.main-container {
+    background-color: white; // Fondo blanco para la sección principal.
+    margin: 20px auto; // Margen superior e inferior. Centrado horizontalmente.
+    max-width: 1200px; // Ancho máximo del contenedor.
+    padding: 20px; // Espaciado interno.
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Sombra suave para darle un poco de elevación al contenedor.
+}
+
+.header {
+    text-align: center; // Centrar el contenido del encabezado.
+    margin-bottom: 20px; // Espaciado entre el encabezado y el botón.
+
+    h2 {
+        margin-bottom: 10px; // Espaciado entre el título y el párrafo.
+        color: #333; // Color del texto.
+    }
+
+    p {
+        color: #777; // Color del texto descriptivo.
+    }
+}
+
+.add-button {
+    display: block; // Ocupar toda la anchura disponible.
+    margin: 0 auto 20px auto; // Centrar horizontalmente y darle margen inferior.
+    background-color: #FF5733;
+    color: white;
+}
