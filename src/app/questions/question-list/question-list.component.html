@@ -6,7 +6,13 @@
       la hora de desarrollar los formularios.
     </p>
   </div>
-  <button [routerLink]="['/questions/create']" mat-raised-button class="add-button">Añadir nueva pregunta</button>
+  <button
+    [routerLink]="['/questions/create']"
+    mat-raised-button
+    class="add-button"
+  >
+    Añadir nueva pregunta
+  </button>
   <div class="table-container">
     <mat-table [dataSource]="dataSource">
       <!-- Columna Tipo -->
@@ -25,7 +31,13 @@
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
         <mat-cell *matCellDef="let question">
-          <button mat-button color="accent">Editar</button>
+          <button
+            mat-button
+            color="accent"
+            [routerLink]="['/questions/edit', question.id]"
+          >
+            Editar
+          </button>
           <button mat-button color="warn" (click)="openDeleteDialog()">
             Eliminar
           </button>

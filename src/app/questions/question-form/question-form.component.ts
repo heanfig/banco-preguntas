@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  Form,
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { QuestionsService } from '../questions.service';
+import { ActivatedRoute } from '@angular/router';
+import { QuestionFormMode } from 'src/app/shared/enums/question-form.mode';
+import { Question } from 'src/app/shared/interfaces/question';
 
 @Component({
   selector: 'app-question-form',
@@ -9,22 +18,45 @@ import { QuestionsService } from '../questions.service';
 })
 export class QuestionFormComponent implements OnInit {
   questionForm!: FormGroup;
+  formMode: QuestionFormMode;
 
   constructor(
     private fb: FormBuilder,
+    private route: ActivatedRoute,
     private questionsService: QuestionsService
-  ) {}
+  ) {
+    this.formMode = QuestionFormMode.CREATION;
+  }
+
+  get optionsFormArray(): FormArray {
+    return this.questionForm.get('options') as FormArray;
+  }
 
   ngOnInit(): void {
     this.initForm();
+
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.formMode = QuestionFormMode.EDITION;
+      this.cargarDatosParaEdicion(id);
+    }
+  }
+
+  private cargarDatosParaEdicion(id: string) {
+    this.questionsService.findQuestionById(id).subscribe((question) => {
+      this.questionForm.patchValue(question);
+      question.options.forEach((option) => {
+        this.optionsFormArray.push(this.fb.control(option));
+      });
+    });
   }
 
   private initForm() {
     this.questionForm = this.fb.group({
       type: ['', Validators.required],
-      question: ['', Validators.required],
+      text: ['', Validators.required],
       options: this.fb.array([]),
-      obligatorio: [false],
+      mandatory: [false],
     });
   }
 

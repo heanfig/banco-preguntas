@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Question } from '../shared/interfaces/question';
 import { HttpClient } from '@angular/common/http';
 
@@ -13,5 +13,13 @@ export class QuestionsService {
 
   getQuestions(): Observable<Question[]> {
     return this.http.get<Question[]>(this.jsonUrl);
+  }
+
+  findQuestionById(id: string): Observable<Question> {
+    return this.http
+      .get<Question[]>(this.jsonUrl)
+      .pipe(
+        map((questions) => questions.find((question) => question.id === id))
+      ) as Observable<Question>;
   }
 }

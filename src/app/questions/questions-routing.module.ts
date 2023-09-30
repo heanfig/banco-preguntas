@@ -6,7 +6,8 @@ import { QuestionFormComponent } from './question-form/question-form.component';
 
 const routes: Routes = [
   { path: '', component: QuestionListComponent },
-  { path: 'create', component: QuestionFormComponent }
+  { path: 'create', component: QuestionFormComponent },
+  { path: 'edit/:id', component: QuestionFormComponent }
 ];
 
 @NgModule({
