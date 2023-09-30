@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Question } from 'src/app/shared/interfaces/question';
 import { QuestionsService } from '../questions.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteConfirmDialogComponent } from '../delete-confirm-dialog/delete-confirm-dialog.component';
 
 @Component({
   selector: 'app-question-list',
@@ -9,14 +13,34 @@ import { QuestionsService } from '../questions.service';
 })
 export class QuestionListComponent implements OnInit {
   public questions: Question[] = [];
+  public dataSource = new MatTableDataSource<Question>([]);
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   displayedColumns = ['type', 'question', 'actions'];
 
-  constructor(private questionService: QuestionsService) {}
+  constructor(
+    private questionService: QuestionsService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.questionService.getQuestions().subscribe((data) => {
-      console.warn('getQuestions', data);
-      this.questions = data;
+      this.dataSource.data = data;
+      this.dataSource.paginator = this.paginator;
     });
+  }
+
+  openDeleteDialog(): void {
+    const dialogRef = this.dialog.open(DeleteConfirmDialogComponent, {
+      width: '300px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.deleteQuestion();
+      }
+    });
+  }
+
+  deleteQuestion(): void {
   }
 }

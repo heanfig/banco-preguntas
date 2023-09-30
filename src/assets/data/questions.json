@@ -21,6 +21,50 @@
         "mandatory": false
     },
     {
+        "type": "MultipleChoice",
+        "text": "¿Cuáles de los siguientes frutos te gusta comer? (Puede seleccionar más de uno)",
+        "options": [
+            "Manzana",
+            "Plátano",
+            "Cereza",
+            "Pera"
+        ],
+        "mandatory": false
+    },
+    {
+        "type": "MultipleChoice",
+        "text": "¿Cuáles de los siguientes frutos te gusta comer? (Puede seleccionar más de uno)",
+        "options": [
+            "Manzana",
+            "Plátano",
+            "Cereza",
+            "Pera"
+        ],
+        "mandatory": false
+    },
+    {
+        "type": "MultipleChoice",
+        "text": "¿Cuáles de los siguientes frutos te gusta comer? (Puede seleccionar más de uno)",
+        "options": [
+            "Manzana",
+            "Plátano",
+            "Cereza",
+            "Pera"
+        ],
+        "mandatory": false
+    },
+    {
+        "type": "MultipleChoice",
+        "text": "¿Cuáles de los siguientes frutos te gusta comer? (Puede seleccionar más de uno)",
+        "options": [
+            "Manzana",
+            "Plátano",
+            "Cereza",
+            "Pera"
+        ],
+        "mandatory": false
+    },
+    {
         "type": "Calendar",
         "text": "Selecciona una fecha importante",
         "mandatory": false

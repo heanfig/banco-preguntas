@@ -8,7 +8,7 @@
   </div>
   <button mat-raised-button class="add-button">Añadir nueva pregunta</button>
   <div class="table-container">
-    <mat-table [dataSource]="questions">
+    <mat-table [dataSource]="dataSource">
       <!-- Columna Tipo -->
       <ng-container matColumnDef="type">
         <mat-header-cell *matHeaderCellDef> Tipo </mat-header-cell>
@@ -26,12 +26,18 @@
         <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
         <mat-cell *matCellDef="let question">
           <button mat-button color="accent">Editar</button>
-          <button mat-button color="warn">Eliminar</button>
+          <button mat-button color="warn" (click)="openDeleteDialog()">
+            Eliminar
+          </button>
         </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
+    <mat-paginator
+      [pageSizeOptions]="[5, 8, 10, 20]"
+      showFirstLastButtons
+    ></mat-paginator>
   </div>
 </div>
