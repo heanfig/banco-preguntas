@@ -1,0 +1,27 @@
+<form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+  <select formControlName="type">
+    <option value="Abierta">Abierta</option>
+    <option value="Cerrada">Cerrada</option>
+    <option value="Varias opciones">Varias opciones</option>
+  </select>
+
+  <input formControlName="question" placeholder="Escribe la pregunta" />
+
+  <div
+    *ngIf="
+      questionForm.get('type')?.value === 'Cerrada' ||
+      questionForm.get('type')?.value === 'Varias opciones'
+    "
+  >
+    <div
+      formArrayName="options"
+      *ngFor="let option of options.controls; let i = index"
+    >
+      <input [formControlName]="i" placeholder="Opción" />
+      <button (click)="removeOption(i)">Eliminar</button>
+    </div>
+    <button (click)="addOption()">Agregar opción</button>
+  </div>
+
+  <button type="submit">Guardar</button>
+</form>

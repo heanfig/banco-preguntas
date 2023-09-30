@@ -7,15 +7,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DeleteConfirmDialogComponent } from './delete-confirm-dialog/delete-confirm-dialog.component';
+import { QuestionFormComponent } from './question-form/question-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [QuestionListComponent, DeleteConfirmDialogComponent],
+  declarations: [QuestionListComponent, DeleteConfirmDialogComponent, QuestionFormComponent],
   imports: [
+    CommonModule,
+    RouterModule,
     MatTableModule,
     MatPaginatorModule,
     MatButtonModule,
     MatDialogModule,
-    CommonModule,
+    ReactiveFormsModule,
     QuestionsRoutingModule,
   ],
   exports: [MatTableModule, MatButtonModule],
