@@ -5,6 +5,7 @@ import { QuestionsRoutingModule } from './questions-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DeleteConfirmDialogComponent } from './delete-confirm-dialog/delete-confirm-dialog.component';
 import { QuestionFormComponent } from './question-form/question-form.component';
@@ -17,6 +18,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     RouterModule,
     MatTableModule,
+    MatSlideToggleModule,
     MatPaginatorModule,
     MatButtonModule,
     MatDialogModule,

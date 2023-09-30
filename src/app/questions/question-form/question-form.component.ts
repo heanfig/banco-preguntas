@@ -24,6 +24,7 @@ export class QuestionFormComponent implements OnInit {
       type: ['', Validators.required],
       question: ['', Validators.required],
       options: this.fb.array([]),
+      obligatorio: [false],
     });
   }
 
