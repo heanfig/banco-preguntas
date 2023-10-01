@@ -112,5 +112,21 @@
         display: flex;
         justify-content: flex-end;
         gap: 1rem;
+
+        &--cancel {
+            --mdc-protected-button-container-color: #fff;
+            --mdc-protected-button-label-text-color: #2377A2;
+            font-weight: 600;
+            padding: 1.5rem 4rem;
+            border: 2px solid #2377A2;
+            color: #2377A2;
+            background: #fff;
+        }
+
+        &--save {
+            border: 2px solid $base-color;
+            padding: 1.5rem 4rem;
+            font-weight: 600;
+        }
     }
 }

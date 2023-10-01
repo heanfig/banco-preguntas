@@ -118,8 +118,15 @@
 
               <div *ngIf="questionForm.get('type')?.value === 'CALENDAR'">
                 <mat-form-field>
-                  <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY">
-                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <input
+                    matInput
+                    [matDatepicker]="picker"
+                    placeholder="MM/DD/YYYY"
+                  />
+                  <mat-datepicker-toggle
+                    matIconSuffix
+                    [for]="picker"
+                  ></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
               </div>
@@ -138,14 +145,14 @@
           [routerLink]="['/questions']"
           mat-raised-button
           color="primary"
-          class="mat-elevation-z0 main-button add-button no-shadow"
+          class="mat-elevation-z0 main-button add-button no-shadow question-form__action--cancel"
         >
           Regresar
         </button>
         <button
           mat-raised-button
           color="primary"
-          class="mat-elevation-z0 main-button add-button no-shadow"
+          class="mat-elevation-z0 main-button add-button no-shadow question-form__action--save"
         >
           Guardar
         </button>
