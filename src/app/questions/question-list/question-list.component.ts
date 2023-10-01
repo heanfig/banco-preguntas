@@ -37,7 +37,7 @@ export class QuestionListComponent implements OnInit {
 
   openDeleteDialog(): void {
     const dialogRef = this.dialog.open(DeleteConfirmDialogComponent, {
-      width: '300px',
+      width: '450px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

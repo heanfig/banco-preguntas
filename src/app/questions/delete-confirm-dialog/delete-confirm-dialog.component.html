@@ -1,11 +1,35 @@
-<h2>Eliminar</h2>
-<p>
-  ¿Estás seguro que quieres eliminar la pregunta seleccionada? Recuerda que no
-  la podrás recuperar nuevamente.
-</p>
-<div class="actions">
-  <button mat-button mat-dialog-close>No, cancelar</button>
-  <button mat-button color="warn" (click)="confirmDelete()">
-    Sí, eliminar
-  </button>
+<div class="dialog dialog-remove">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="60"
+    viewBox="0 -960 960 960"
+    width="60"
+  >
+    <path
+      d="m40-120 440-760 440 760H40Zm138-80h604L480-720 178-200Zm302-40q17 0 28.5-11.5T520-280q0-17-11.5-28.5T480-320q-17 0-28.5 11.5T440-280q0 17 11.5 28.5T480-240Zm-40-120h80v-200h-80v200Zm40-100Z"
+    />
+  </svg>
+  <h2>Eliminar</h2>
+  <p>
+    ¿Estás seguro que quieres eliminar la pregunta seleccionada? Recuerda que no
+    la podrás recuperar nuevamente.
+  </p>
+  <div class="dialog-actions">
+    <button
+      mat-raised-button
+      color="primary"
+      class="mat-elevation-z0 main-button add-button no-shadow dialog-button--save"
+    >
+      Si, eliminar
+    </button>
+
+    <button
+      mat-raised-button
+      color="primary"
+      class="mat-elevation-z0 main-button no-shadow dialog-button--cancel"
+      mat-dialog-close
+    >
+      No, cancelar
+    </button>
+  </div>
 </div>
