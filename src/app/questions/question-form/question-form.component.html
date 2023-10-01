@@ -1,31 +1,77 @@
-<form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
-  <select formControlName="type">
-    <option value="OPEN">Abierta</option>
-    <option value="CLOSED">Cerrada</option>
-    <option value="MULTIPLECHOICE">Varias opciones</option>
-  </select>
-
-  <input formControlName="text" placeholder="Escribe la pregunta" />
-
-  <div
-    *ngIf="
-      questionForm.get('type')?.value === 'CLOSED' ||
-      questionForm.get('type')?.value === 'MULTIPLECHOICE'
-    "
-  >
-    <div
-      formArrayName="options"
-      *ngFor="let option of options.controls; let i = index"
-    >
-      <input [formControlName]="i" placeholder="Opción" />
-      <button (click)="removeOption(i)">Eliminar</button>
-    </div>
-    <button (click)="addOption()">Agregar opción</button>
+<div class="main-container">
+  <div class="header">
+    <h2>Administrar banco de preguntas</h2>
+    <p>
+      Define el banco de preguntas, con el cual podrás agilizar los procesos a
+      la hora de desarrollar los formularios.
+    </p>
   </div>
+  <div class="question-list">
+    <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+      <mat-card class="question-form">
+        <mat-card-content>
+          <div class="horizontal-sections">
+            <div class="section">
+              <label
+                >Selecciona que tipo de pregunta deseas generar
+                <span>*</span></label
+              >
+              <mat-form-field>
+                <mat-select formControlName="type">
+                  <mat-option value="OPEN"> Abierta </mat-option>
+                  <mat-option value="CLOSED"> Cerrada </mat-option>
+                  <mat-option value="MULTIPLECHOICE">
+                    Varias opciones
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
 
-  <mat-slide-toggle formControlName="mandatory">
-    Obligatorio
-  </mat-slide-toggle>
+            <div class="section">
+              <label>Añade el texto para tu pregunta<span>*</span></label>
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  formControlName="text"
+                  placeholder="Escribe la pregunta"
+                />
+              </mat-form-field>
 
-  <button type="submit">Guardar</button>
-</form>
+              <div *ngIf="questionForm.get('type')?.value === 'CLOSED'">
+                <div
+                  class="add-option__list"
+                  formArrayName="options"
+                  *ngFor="let option of options.controls; let i = index"
+                >
+                  <mat-radio-button value="1" class="add-option__content"
+                    ><input
+                      class="add-option__input"
+                      [formControlName]="i"
+                      placeholder="Añade opción 1"
+                  /></mat-radio-button>
+
+                  <mat-icon
+                    class="add-option__close-icon"
+                    aria-hidden="false"
+                    fontIcon="close"
+                    (click)="removeOption(i)"
+                    iconPositionEnd
+                  ></mat-icon>
+                </div>
+                <a class="add-option__link" (click)="addOption()"
+                  >Añadir opción o respuesta "otro"</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="toggle-section">
+            <mat-slide-toggle formControlName="mandatory">
+              Obligatorio
+            </mat-slide-toggle>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+</div>

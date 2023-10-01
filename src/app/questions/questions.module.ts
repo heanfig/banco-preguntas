@@ -5,6 +5,10 @@ import { QuestionsRoutingModule } from './questions-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -24,10 +28,14 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     MatIconModule,
     MatTableModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatInputModule,
     MatSlideToggleModule,
     MatPaginatorModule,
     MatButtonModule,
     MatDialogModule,
+    MatCardModule,
     ReactiveFormsModule,
     QuestionsRoutingModule,
   ],

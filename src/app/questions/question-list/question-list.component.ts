@@ -28,6 +28,7 @@ export class QuestionListComponent implements OnInit {
 
   ngOnInit(): void {
     this.questionService.getQuestions().subscribe((data) => {
+      console.warn('data', data)
       this.dataSource.data = data;
       this.dataSource.paginator = this.paginator;
     });
