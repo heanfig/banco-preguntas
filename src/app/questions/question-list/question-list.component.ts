@@ -26,6 +26,10 @@ export class QuestionListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getQuestions();
+  }
+
+  getQuestions() {
     this.questionService.getQuestions().subscribe((data) => {
       this.dataSource.data = data;
     });
@@ -35,17 +39,20 @@ export class QuestionListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  openDeleteDialog(): void {
+  openDeleteDialog(questionId: string): void {
     const dialogRef = this.dialog.open(DeleteConfirmDialogComponent, {
       width: '450px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.deleteQuestion();
+        this.deleteQuestion(questionId);
       }
     });
   }
 
-  deleteQuestion(): void {}
+  deleteQuestion(questionId: string): void {
+    this.questionService.removeQuestion(questionId);
+    this.getQuestions();
+  }
 }

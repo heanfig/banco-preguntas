@@ -17,8 +17,14 @@ export class QuestionsService {
     return of(this.questionList);
   }
 
-  addQuestion(question: Question){
-    this.questionList.push(question);
+  removeQuestion(id: string) {
+    const questionList = this.questionList.filter((item) => item.id !== id);
+    this.questionList = questionList;
+  }
+
+  addQuestion(question: Question) {
+    const questionList = [question, ...this.questionList];
+    this.questionList = questionList;
   }
 
   findQuestionById(id: string): Observable<Question> {
