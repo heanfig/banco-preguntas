@@ -7,9 +7,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { QuestionsService } from '../questions.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionFormMode } from 'src/app/shared/enums/question-form.mode';
 import { Question } from 'src/app/shared/interfaces/question';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-question-form',
@@ -23,6 +24,7 @@ export class QuestionFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
+    private router: Router,
     private questionsService: QuestionsService
   ) {
     this.formMode = QuestionFormMode.CREATION;
@@ -75,7 +77,10 @@ export class QuestionFormComponent implements OnInit {
   }
 
   onSubmit() {
-    //this.questionsService.addQuestion(this.questionForm.value);
-    //console.log(this.questionsService.getQuestions());
+    this.questionsService.addQuestion({
+      id: uuidv4(),
+      ...this.questionForm.value,
+    });
+    this.router.navigate(['/questions']);
   }
 }

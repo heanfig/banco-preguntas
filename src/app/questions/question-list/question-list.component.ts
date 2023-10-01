@@ -14,7 +14,6 @@ import { QuestionTypeLabel } from 'src/app/shared/constants/question-type';
   styleUrls: ['./question-list.component.scss'],
 })
 export class QuestionListComponent implements OnInit {
-  
   public questions: Question[] = [];
   public questionLabel = QuestionTypeLabel;
   public dataSource = new MatTableDataSource<Question>([]);
@@ -28,10 +27,12 @@ export class QuestionListComponent implements OnInit {
 
   ngOnInit(): void {
     this.questionService.getQuestions().subscribe((data) => {
-      console.warn('data', data)
       this.dataSource.data = data;
-      this.dataSource.paginator = this.paginator;
     });
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
   openDeleteDialog(): void {
@@ -46,6 +47,5 @@ export class QuestionListComponent implements OnInit {
     });
   }
 
-  deleteQuestion(): void {
-  }
+  deleteQuestion(): void {}
 }

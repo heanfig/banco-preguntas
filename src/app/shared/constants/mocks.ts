@@ -50,13 +50,13 @@ export const MOCK_QUESTION_LIST = [
   },
   {
     id: '8fbed864-4871-4ae4-9b38-6547d077b38b',
-    type: 'Calendar',
+    type: 'CALENDAR',
     text: 'Selecciona una fecha importante',
     mandatory: false,
   },
   {
     id: 'c189dbea-977c-46d2-b2f6-fed597dc4ee5',
-    type: 'Dropdown',
+    type: 'DROPDOWN',
     text: 'Elige un país de la lista',
     options: ['México', 'Colombia', 'Perú', 'Argentina'],
     mandatory: true,

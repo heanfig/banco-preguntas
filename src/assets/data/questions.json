@@ -76,17 +76,5 @@
         "type": "CALENDAR",
         "text": "Selecciona una fecha importante",
         "mandatory": false
-    },
-    {
-        "id": "c189dbea-977c-46d2-b2f6-fed597dc4ee5",
-        "type": "DROPDOWN",
-        "text": "Elige un país de la lista",
-        "options": [
-            "México",
-            "Colombia",
-            "Perú",
-            "Argentina"
-        ],
-        "mandatory": true
     }
 ]

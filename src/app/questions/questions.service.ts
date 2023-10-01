@@ -8,12 +8,17 @@ import { MOCK_QUESTION_LIST } from '../shared/constants/mocks';
   providedIn: 'root',
 })
 export class QuestionsService {
-  private jsonUrl = 'assets/data/questions.json';
+  //private jsonUrl = 'assets/data/questions.json';
+  private questionList: Question[] = MOCK_QUESTION_LIST;
   constructor(private http: HttpClient) {}
 
   getQuestions(): Observable<Question[]> {
-    return this.http.get<Question[]>(this.jsonUrl);
-   // return of(MOCK_QUESTION_LIST);
+    //return this.http.get<Question[]>(this.jsonUrl);
+    return of(this.questionList);
+  }
+
+  addQuestion(question: Question){
+    this.questionList.push(question);
   }
 
   findQuestionById(id: string): Observable<Question> {

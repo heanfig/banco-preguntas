@@ -45,22 +45,20 @@
           <button
             mat-button
             color="accent"
+            class="question-list__action"
             [routerLink]="['/questions/edit', question.id]"
           >
-            Editar 
-            <mat-icon
-              aria-hidden="false"
-              aria-label="Example home icon"
-              fontIcon="edit_document"
-            ></mat-icon>
+            Editar
+            <mat-icon aria-hidden="false" fontIcon="edit_document"></mat-icon>
           </button>
-          <button mat-button color="warn" (click)="openDeleteDialog()">
+          <button
+            mat-button
+            color="warn"
+            class="question-list__action"
+            (click)="openDeleteDialog()"
+          >
             Eliminar
-            <mat-icon
-              aria-hidden="false"
-              aria-label="Example home icon"
-              fontIcon="delete"
-            ></mat-icon>
+            <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
           </button>
         </mat-cell>
       </ng-container>
