@@ -20,9 +20,11 @@
                 <mat-select formControlName="type">
                   <mat-option value="OPEN"> Abierta </mat-option>
                   <mat-option value="CLOSED"> Cerrada </mat-option>
+                  <mat-option value="DROPDOWN"> Desplegable </mat-option>
                   <mat-option value="MULTIPLECHOICE">
                     Varias opciones
                   </mat-option>
+                  <mat-option value="CALENDAR"> Calendario </mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
@@ -47,7 +49,7 @@
                     ><input
                       class="add-option__input"
                       [formControlName]="i"
-                      placeholder="Añade opción 1"
+                      [placeholder]="'Añade opción ' + (i + 1)"
                   /></mat-radio-button>
 
                   <mat-icon
@@ -62,6 +64,65 @@
                   >Añadir opción o respuesta "otro"</a
                 >
               </div>
+
+              <div *ngIf="questionForm.get('type')?.value === 'DROPDOWN'">
+                <div
+                  class="add-option__list"
+                  formArrayName="options"
+                  *ngFor="let option of options.controls; let i = index"
+                >
+                  <input
+                    class="add-option__input"
+                    [formControlName]="i"
+                    [placeholder]="'Añade opción ' + (i + 1)"
+                  />
+
+                  <mat-icon
+                    class="add-option__close-icon"
+                    aria-hidden="false"
+                    fontIcon="close"
+                    (click)="removeOption(i)"
+                    iconPositionEnd
+                  ></mat-icon>
+                </div>
+                <a class="add-option__link" (click)="addOption()"
+                  >Añadir otra opción</a
+                >
+              </div>
+
+              <div *ngIf="questionForm.get('type')?.value === 'MULTIPLECHOICE'">
+                <div
+                  class="add-option__list"
+                  formArrayName="options"
+                  *ngFor="let option of options.controls; let i = index"
+                >
+                  <mat-checkbox value="1" class="add-option__content"
+                    ><input
+                      class="add-option__input"
+                      [formControlName]="i"
+                      [placeholder]="'Añade opción ' + (i + 1)"
+                  /></mat-checkbox>
+
+                  <mat-icon
+                    class="add-option__close-icon"
+                    aria-hidden="false"
+                    fontIcon="close"
+                    (click)="removeOption(i)"
+                    iconPositionEnd
+                  ></mat-icon>
+                </div>
+                <a class="add-option__link" (click)="addOption()"
+                  >Añadir opción o respuesta "otro"</a
+                >
+              </div>
+
+              <div *ngIf="questionForm.get('type')?.value === 'CALENDAR'">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY">
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
             </div>
           </div>
 
@@ -72,6 +133,23 @@
           </div>
         </mat-card-content>
       </mat-card>
+      <div class="question-form__action">
+        <button
+          [routerLink]="['/questions']"
+          mat-raised-button
+          color="primary"
+          class="mat-elevation-z0 main-button add-button no-shadow"
+        >
+          Regresar
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          class="mat-elevation-z0 main-button add-button no-shadow"
+        >
+          Guardar
+        </button>
+      </div>
     </form>
   </div>
 </div>

@@ -13,7 +13,7 @@
     },
     {
         "id": "72402d30-d5d4-40fd-886e-115e621c497a",
-        "type": "MULTIPLECHOICE",
+        "type": "DROPDOWN",
         "text": "¿Cuáles de los siguientes frutos te gusta comer? (Puede seleccionar más de uno)",
         "options": [
             "Manzana",
@@ -73,13 +73,13 @@
     },
     {
         "id": "8fbed864-4871-4ae4-9b38-6547d077b38b",
-        "type": "Calendar",
+        "type": "CALENDAR",
         "text": "Selecciona una fecha importante",
         "mandatory": false
     },
     {
         "id": "c189dbea-977c-46d2-b2f6-fed597dc4ee5",
-        "type": "Dropdown",
+        "type": "DROPDOWN",
         "text": "Elige un país de la lista",
         "options": [
             "México",

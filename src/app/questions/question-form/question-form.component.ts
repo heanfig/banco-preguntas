@@ -53,11 +53,13 @@ export class QuestionFormComponent implements OnInit {
 
   private initForm() {
     this.questionForm = this.fb.group({
-      type: ['', Validators.required],
+      type: ['OPEN', Validators.required],
       text: ['', Validators.required],
       options: this.fb.array([]),
       mandatory: [false],
     });
+
+    this.options.push(this.fb.control('', Validators.required));
   }
 
   get options() {
