@@ -38,7 +38,7 @@
     .question-table {
         --mat-table-row-item-outline-color: transparent;
         --mat-table-row-item-label-text-color: #3D3D3D;
-        
+
         font-family: $font-base;
         border: 1px solid $gray-01;
         border-radius: 9px;
@@ -53,6 +53,12 @@
             text-align: center;
             justify-content: center;
         }
+
+        .mat-column-actions {
+            @media (max-width: 760px) {
+                flex-direction: column;
+            }
+        }
     }
 
     &__action {
@@ -63,6 +69,7 @@
 .content-action {
     display: flex;
     justify-content: right;
+
     @media (max-width: 760px) {
         justify-content: flex-start;
     }
