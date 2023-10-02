@@ -8,12 +8,10 @@ import { MOCK_QUESTION_LIST } from '../shared/constants/mocks';
   providedIn: 'root',
 })
 export class QuestionsService {
-  //private jsonUrl = 'assets/data/questions.json';
   private questionList: Question[] = MOCK_QUESTION_LIST;
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   getQuestions(): Observable<Question[]> {
-    //return this.http.get<Question[]>(this.jsonUrl);
     return of(this.questionList);
   }
 
@@ -31,10 +29,5 @@ export class QuestionsService {
     return of(MOCK_QUESTION_LIST).pipe(
       map((questions) => questions.find((question) => question.id === id))
     ) as Observable<Question>;
-    /*return this.http
-      .get<Question[]>(this.jsonUrl)
-      .pipe(
-        map((questions) => questions.find((question) => question.id === id))
-      ) as Observable<Question>;*/
   }
 }

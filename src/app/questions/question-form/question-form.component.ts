@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import {
   Form,
   FormArray,
@@ -9,8 +15,8 @@ import {
 import { QuestionsService } from '../questions.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionFormMode } from 'src/app/shared/enums/question-form.mode';
-import { Question } from 'src/app/shared/interfaces/question';
 import { v4 as uuidv4 } from 'uuid';
+import { QuestionType } from 'src/app/shared/enums/question-type.enum';
 
 @Component({
   selector: 'app-question-form',
@@ -18,8 +24,10 @@ import { v4 as uuidv4 } from 'uuid';
   styleUrls: ['./question-form.component.scss'],
 })
 export class QuestionFormComponent implements OnInit {
-  questionForm!: FormGroup;
-  formMode: QuestionFormMode;
+  public questionForm!: FormGroup;
+  public formMode: QuestionFormMode;
+  public questionType = QuestionType;
+  @ViewChildren('inputElement') inputElements!: QueryList<ElementRef>;
 
   constructor(
     private fb: FormBuilder,
@@ -31,6 +39,10 @@ export class QuestionFormComponent implements OnInit {
   }
 
   get optionsFormArray(): FormArray {
+    return this.questionForm.get('options') as FormArray;
+  }
+
+  get options() {
     return this.questionForm.get('options') as FormArray;
   }
 
@@ -64,19 +76,30 @@ export class QuestionFormComponent implements OnInit {
     this.options.push(this.fb.control('', Validators.required));
   }
 
-  get options() {
-    return this.questionForm.get('options') as FormArray;
-  }
-
-  addOption() {
+  public addOption(event?: Event) {
+    event?.preventDefault();
     this.options.push(this.fb.control('', Validators.required));
+    this.autoFocusElement();
   }
 
-  removeOption(index: number) {
+  public preventInputSubmit(event: Event) {
+    event.preventDefault();
+  }
+
+  public autoFocusElement() {
+    setTimeout(() => {
+      const lastInput = this.inputElements.last;
+      if (lastInput) {
+        lastInput.nativeElement.focus();
+      }
+    });
+  }
+
+  public removeOption(index: number) {
     this.options.removeAt(index);
   }
 
-  onSubmit() {
+  public onSubmit() {
     this.questionsService.addQuestion({
       id: uuidv4(),
       ...this.questionForm.value,

@@ -36,10 +36,11 @@
                   matInput
                   formControlName="text"
                   placeholder="Escribe la pregunta"
+                  (keydown.enter)="preventInputSubmit($event)"
                 />
               </mat-form-field>
 
-              <div *ngIf="questionForm.get('type')?.value === 'CLOSED'">
+              <div *ngIf="questionForm.get('type')?.value === questionType.CLOSED">
                 <div
                   class="add-option__list"
                   formArrayName="options"
@@ -47,9 +48,11 @@
                 >
                   <mat-radio-button value="1" class="add-option__content"
                     ><input
+                      #inputElement
                       class="add-option__input"
                       [formControlName]="i"
                       [placeholder]="'Añade opción ' + (i + 1)"
+                      (keydown.enter)="addOption($event)"
                   /></mat-radio-button>
 
                   <mat-icon
@@ -60,21 +63,23 @@
                     iconPositionEnd
                   ></mat-icon>
                 </div>
-                <a class="add-option__link" (click)="addOption()"
+                <a class="add-option__link" (click)="addOption($event)"
                   >Añadir opción o respuesta "otro"</a
                 >
               </div>
 
-              <div *ngIf="questionForm.get('type')?.value === 'DROPDOWN'">
+              <div *ngIf="questionForm.get('type')?.value === questionType.DROPDOWN">
                 <div
                   class="add-option__list"
                   formArrayName="options"
                   *ngFor="let option of options.controls; let i = index"
                 >
                   <input
+                    #inputElement
                     class="add-option__input"
                     [formControlName]="i"
                     [placeholder]="'Añade opción ' + (i + 1)"
+                    (keydown.enter)="addOption($event)"
                   />
 
                   <mat-icon
@@ -90,7 +95,7 @@
                 >
               </div>
 
-              <div *ngIf="questionForm.get('type')?.value === 'MULTIPLECHOICE'">
+              <div *ngIf="questionForm.get('type')?.value === questionType.MULTIPLECHOICE">
                 <div
                   class="add-option__list"
                   formArrayName="options"
@@ -98,9 +103,11 @@
                 >
                   <mat-checkbox value="1" class="add-option__content"
                     ><input
+                      #inputElement
                       class="add-option__input"
                       [formControlName]="i"
                       [placeholder]="'Añade opción ' + (i + 1)"
+                      (keydown.enter)="addOption($event)"
                   /></mat-checkbox>
 
                   <mat-icon
@@ -116,7 +123,7 @@
                 >
               </div>
 
-              <div *ngIf="questionForm.get('type')?.value === 'CALENDAR'">
+              <div *ngIf="questionForm.get('type')?.value === questionType.CALENDAR">
                 <mat-form-field>
                   <input
                     matInput
