@@ -17,7 +17,7 @@
                 <span>*</span></label
               >
               <mat-form-field>
-                <mat-select formControlName="type">
+                <mat-select formControlName="type" (selectionChange)="checkQuestionType($event)">
                   <mat-option value="OPEN"> Abierta </mat-option>
                   <mat-option value="CLOSED"> Cerrada </mat-option>
                   <mat-option value="DROPDOWN"> Desplegable </mat-option>

@@ -25,6 +25,16 @@ export class QuestionsService {
     this.questionList = questionList;
   }
 
+  editQuestion(question: Question) {
+    const questionList = this.questionList.map((item) => {
+      if (item.id === question.id) {
+        return question;
+      }
+      return item;
+    });
+    this.questionList = questionList;
+  }
+
   findQuestionById(id: string): Observable<Question> {
     return of(this.questionList).pipe(
       map((questions) => questions.find((question) => question.id === id))
