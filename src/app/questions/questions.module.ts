@@ -19,6 +19,7 @@ import { QuestionFormComponent } from './question-form/question-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatNativeDateModule } from '@angular/material/core';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   imports: [
     CommonModule,
     RouterModule,
+    SharedModule,
     MatIconModule,
     MatTableModule,
     MatSelectModule,
