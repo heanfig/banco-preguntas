@@ -26,7 +26,7 @@ export class QuestionsService {
   }
 
   findQuestionById(id: string): Observable<Question> {
-    return of(MOCK_QUESTION_LIST).pipe(
+    return of(this.questionList).pipe(
       map((questions) => questions.find((question) => question.id === id))
     ) as Observable<Question>;
   }
