@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DeleteConfirmDialogComponent } from '../delete-confirm-dialog/delete-confirm-dialog.component';
 import { QuestionType } from 'src/app/shared/enums/question-type.enum';
 import { QuestionTypeLabel } from 'src/app/shared/constants/question-type';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-question-list',
@@ -19,6 +20,7 @@ export class QuestionListComponent implements OnInit {
   public dataSource = new MatTableDataSource<Question>([]);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   displayedColumns = ['type', 'question', 'actions'];
+  decimalPipe = new DecimalPipe('es');
 
   constructor(
     private questionService: QuestionsService,
@@ -37,6 +39,15 @@ export class QuestionListComponent implements OnInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.paginator._intl.getRangeLabel = (
+      page: number,
+      pageSize: number,
+      length: number
+    ) => {
+      const start = page * pageSize + 1;
+      const end = (page + 1) * pageSize;
+      return `${start} - ${end} de ${this.decimalPipe.transform(length)}`;
+    };
   }
 
   openDeleteDialog(questionId: string): void {
