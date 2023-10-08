@@ -73,6 +73,11 @@
         }
     }
 
+    .required-field {
+        color: $base-color;
+        margin-left: -18px;
+    }
+
     .add-option {
         &__content {
             width: 100%;
@@ -132,6 +137,9 @@
             border: 2px solid $base-color;
             padding: 1.5rem 4rem;
             font-weight: 600;
+            &:is([disabled]){
+                border-color: var(--mdc-protected-button-disabled-label-text-color);
+            }
         }
     }
 }

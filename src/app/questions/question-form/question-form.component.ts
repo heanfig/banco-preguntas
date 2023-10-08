@@ -9,6 +9,7 @@ import {
   Form,
   FormArray,
   FormBuilder,
+  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
@@ -38,6 +39,10 @@ export class QuestionFormComponent implements OnInit {
     private questionsService: QuestionsService
   ) {
     this.formMode = QuestionFormMode.CREATION;
+  }
+
+  get text() {
+    return this.questionForm.get('text') as FormControl;
   }
 
   /**

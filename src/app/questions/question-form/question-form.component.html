@@ -38,6 +38,9 @@
                   placeholder="Escribe la pregunta"
                   (keydown.enter)="preventInputSubmit($event)"
                 />
+                <mat-hint *ngIf="text?.invalid && (text?.dirty || text?.touched)" class="hint">
+                  <span class="required-field"> Campo obligatorio </span>
+                </mat-hint>
               </mat-form-field>
 
               <div *ngIf="questionForm.get('type')?.value === questionType.CLOSED">
@@ -160,6 +163,7 @@
           mat-raised-button
           color="primary"
           class="mat-elevation-z0 main-button add-button no-shadow question-form__action--save"
+          [disabled]="text.invalid"
         >
           Guardar
         </button>

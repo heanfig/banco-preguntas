@@ -42,8 +42,7 @@
         font-family: $font-base;
         border: 1px solid $gray-01;
         border-radius: 9px;
-        margin: 2rem 0;
-        color: red;
+        margin: 0.2rem;
 
         mat-header-row {
             background: none;
@@ -63,6 +62,18 @@
 
     &__action {
         font-weight: 600;
+    }
+
+    mat-paginator ::ng-deep .mat-mdc-paginator-container {
+        justify-content: center;
+
+        .mat-mdc-paginator-range-label {
+            order: 1;
+        }
+
+        .mat-mdc-paginator-navigation-next {
+            order: 2;
+        }
     }
 }
 

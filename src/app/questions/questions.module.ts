@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { QuestionsRoutingModule } from './questions-routing.module';
 import { MatTableModule } from '@angular/material/table';
@@ -20,6 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SharedModule } from '../shared/shared.module';
+import localeEs from '@angular/common/locales/es';
+
+registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
@@ -48,5 +51,6 @@ import { SharedModule } from '../shared/shared.module';
     QuestionsRoutingModule,
   ],
   exports: [MatTableModule, MatButtonModule],
+  providers: [{ provide: LOCALE_ID, useValue: 'es' }],
 })
 export class QuestionsModule {}
