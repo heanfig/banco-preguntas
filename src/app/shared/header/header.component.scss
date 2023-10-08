@@ -1,16 +1,14 @@
-.main-container{
-    display: flex;
-    margin: 20px auto;
-    max-width: 1360px;
-    padding: 20px;
-   }
-   div{
-    padding-left: 170px;
-   }
+.header_logo{
+    width: 100%;
+
+    & .main-container{
+        margin: 0px auto;
+        padding: 0px;
+        padding-top: 15px;
+    }
+}
 
    img{
-    top: 943px;
     left: 48px;
-    width: 102px;
     height: 33px;
 }
